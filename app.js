@@ -59,7 +59,4 @@ app.use("/", indexRoutes);
 app.use("/likes", likesRoutes);
 app.use("/likes/:id/comments", commentsRoutes);
 
-app.listen(8000, (err) => {
-    if (err) console.log(err);
-    else console.log('Like serving!!');
-});
+app.listen(process.env.PORT, process.env.IP);
