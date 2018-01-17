@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+
+<% if (currentUser) {%>
+<h4> <%=currentUser.username%> </h4>
+<% } %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Any New Likes Today?</h1>
+            <div>
+                <a class="btn btn-primary btn-lg" href="/likes/new">Add New Likes</a>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="row">
+        <% likes.forEach( (like) => {%>
+        <div class="col-md-4 col-sm-6">
+            <div class="thumbnail">
+                <img src="<%= like.image%>" >
+                <div class="caption"><h4><%= like.name %></h4></div>
+                <div class="dock">
+                    <div class="pull-right"> 
+                        <div class="li">
+                            <span class="glyphicon glyphicon-heart"></span> 
+                            <%= like.like %> 
+                        </div>
+                    </div>
+                    <a class="btn btn-info" href="/likes/<%= like._id %>">more info</a>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>
+<% include ../partials/footer %>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Like</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand"><span class="glyphicon glyphicon-heart-empty"> </span> Like</a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav navbar-right nav">
+                <%if (!currentUser) {%>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Sign Up</a></li>
+                <%} else {%>
+                <li> <a>Signed In as: <%= currentUser.username %></a> </li>
+                <li><a href="/logout">Log Out</a></li>
+                <% } %>
+            </ul>
+
+        </div>
+
+    </div>
+    </nav>
+    <div class="container">
+        <% console.log(error) %>
+        <% if (error && error.length > 0) { %>
+            <div class="alert alert-danger" role="alert"> 
+                <h1><%= error %></h1>
+            </div>
+        <% } %>
+
+        <% if (success && success.length > 0) { %>
+        <div class="alert alert-success" role="alert"> 
+            <h1><%= success %></h1>
+        </div>
+        <% } %>
+    </div>
+
+

@@ -1,0 +1,21 @@
+.img-thumbnail img {
+    width: 100%;
+}
+.thumbnail .caption-full {
+    padding: 7px;
+}
+.thumbnail {
+    padding: 0;
+}
+
+#delete_btn, #comment-btn {
+    display: inline;
+}
+
+.dock {
+    padding: 10px;
+}
+
+.dock .like {
+    font-size: 2em;
+}
