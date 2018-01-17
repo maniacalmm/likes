@@ -22,7 +22,7 @@ var commentsRoutes      = require("./routes/comments"),
 
 // seedDB();
 
-mongoose.connect('mongodb://localhost/CampCamp_9');
+mongoose.connect('mongodb://tang:geekbeta@ds159997.mlab.com:59997/likedb');
 
 // middleware
 app.use(bodyParser.urlencoded({extended: true})); // to parse the post body
