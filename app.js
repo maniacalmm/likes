@@ -23,10 +23,10 @@ var commentsRoutes      = require("./routes/comments"),
 // seedDB();
 
 mongoose.connect('mongodb://tang:geekbeta@ds159997.mlab.com:59997/likedb');
-//mongoose.connect('mongodb://localhost/CampCamp_9', (err) => {
-    if (err) console.log(err);
-    else console.log("db connected");
-});
+// mongoose.connect('mongodb://localhost/CampCamp_9', (err) => {
+//     if (err) console.log(err);
+//     else console.log("db connected");
+// });
 
 // middleware
 app.use(bodyParser.urlencoded({extended: true})); // to parse the post body
