@@ -60,4 +60,4 @@ app.use("/likes", likesRoutes);
 app.use("/likes/:id/comments", commentsRoutes);
 
 //app.listen(process.env.PORT, process.env.IP);
-app.listen(3000);
+app.listen(process.env.PORT, process.env.IP);
