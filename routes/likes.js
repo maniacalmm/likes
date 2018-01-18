@@ -63,6 +63,26 @@ router.get("/:id/edit", middleware.checkLikeOwnership, (req, res) => {
     });
 });
 
+// UPDATE number of likes on a certain like
+// no signed in required
+router.post("/:id/like", (req, res) => {
+    console.log(req.body);
+    console.log('you reached server post route');
+    Likes.findById(req.params.id, (err, foundLike) => {
+        if (err) console.log(err);
+        else {
+            if (req.body.turn === '0')
+                foundLike.like = foundLike.like + 1;
+            else 
+                foundLike.like = foundLike.like - 1;
+
+            foundLike.save().then(() => {
+                res.json(foundLike.like);
+            });
+        }
+    });
+});
+
 // UPDATE CAMPGROUND ROUTE
 router.put("/:id", middleware.checkLikeOwnership, (req, res) => {
     // find and update the campground

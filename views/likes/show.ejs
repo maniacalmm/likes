@@ -14,10 +14,12 @@
                     <img class="img-responsive" src="<%= data.image %>">
                     <div class="caption-full">
                         <h4 class="pull-right">
-                            <button class="btn btn-default like-btn">
-                                    <span class="glyphicon glyphicon-heart"></span> 
-                                    <span class="num-likes">323</span> 
-                            </button>
+                            <!-- <form  action="/likes/<%data.name%>/like" method="POST"> -->
+                                <button id="like-btn" value="<%=data._id%>" class="btn btn-default">
+                                        <span id="heart" class="glyphicon glyphicon-heart"></span> 
+                                        <span class="num-likes"><%= data.like %></span> 
+                                </button>
+                            <!-- </form> -->
                         </h4>
                         <h1><a><%= data.name %></a></h1>
                         <p class="description"><%= data.description %></p>
