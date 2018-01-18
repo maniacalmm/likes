@@ -71,6 +71,8 @@ router.post("/:id/like", (req, res) => {
     Likes.findById(req.params.id, (err, foundLike) => {
         if (err) console.log(err);
         else {
+            if (!foundLike.like) foundLike.like = 0;
+
             if (req.body.turn === '0')
                 foundLike.like = foundLike.like + 1;
             else 

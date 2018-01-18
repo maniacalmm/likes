@@ -4,7 +4,7 @@ var likeSchema = new mongoose.Schema({
     name: String,
     image: String,
     description: String,
-    like: Number,
+    like: {type: Number, default: 0},
     author: {
         id: {
                 type: mongoose.Schema.Types.ObjectId,
