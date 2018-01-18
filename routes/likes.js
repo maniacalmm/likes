@@ -5,12 +5,29 @@ var middleware = require("../middleware/index");
 
 // INDEX route --> display all grounds
 router.get('/', (req, res) => {
-    Likes.find({}, (err, allLikes) => {
-        if (err) console.log(err);
-        else {
-            res.render("likes/index", {likes: allLikes});
-        }
-    });
+    console.log(req.query.search);
+    var noMatch = "we've got nothing by that, yet :(";
+    if (req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    
+        Likes.find({name: regex}, (err, allLikes) => {
+            if (err) console.log(err);
+            else {
+                if (allLikes.length > 0)
+                    res.render("likes/index", {likes: allLikes, noMatch: ""});
+                else 
+                    res.render("likes/index", {likes: allLikes, noMatch: noMatch});
+            }
+        });
+    } else {
+        Likes.find({}, (err, allLikes) => {
+            if (err) console.log(err);
+            else {
+                res.render("likes/index", {likes: allLikes, noMatch: ""});
+            }
+        }); 
+    }
+
 });
 
 // CREATE route --> create new camp
@@ -106,5 +123,9 @@ router.delete("/:id", middleware.checkLikeOwnership,(req, res) => {
         }
     })
 });
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;

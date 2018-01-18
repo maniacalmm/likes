@@ -1,9 +1,5 @@
 <% include ../partials/header %>
 
-<% if (currentUser) {%>
-<h4> <%=currentUser.username%> </h4>
-<% } %>
-
 <div class="container">
     <header class="jumbotron">
         <div class="container">
@@ -11,9 +7,20 @@
             <div>
                 <a class="btn btn-primary btn-lg" href="/likes/new">Add New Likes</a>
             </div>
+            <p>
+                <form action="/likes" method="GET" class="form-inline">
+                    <div class="form-group">
+                    <input type="text" name="search" placeholder="anything in particular?" class="form-control input-md">
+                    <input type="submit" value="Search" class="btn btn-default">
+                    </div>
+                </form>
+            </p>
         </div>
     </header>
 
+        <div class="container text-center nothing">
+            <p><%= noMatch %></p>
+        </div>
 
     <div class="row">
         <% likes.forEach( (like) => {%>

@@ -1,3 +1,6 @@
+.body {
+    font-family: 'Kavivanar', cursive;
+}
 .img-thumbnail img {
     width: 100%;
 }
@@ -17,5 +20,13 @@
 }
 
 .dock .like {
+    font-size: 2em;
+}
+
+.input-area {
+    text-align: center;
+}
+
+.nothing {
     font-size: 2em;
 }
