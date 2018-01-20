@@ -22,11 +22,11 @@ var commentsRoutes      = require("./routes/comments"),
 
 // seedDB();
 
-//mongoose.connect('mongodb://tang:geekbeta@ds159997.mlab.com:59997/likedb');
-mongoose.connect('mongodb://localhost/CampCamp_9', (err) => {
-    if (err) console.log(err);
-    else console.log("db connected");
-});
+mongoose.connect('mongodb://tang:geekbeta@ds159997.mlab.com:59997/likedb');
+// mongoose.connect('mongodb://localhost/CampCamp_9', (err) => {
+//     if (err) console.log(err);
+//     else console.log("db connected");
+// });
 
 // middleware
 app.use(bodyParser.urlencoded({extended: true})); // to parse the post body
@@ -63,5 +63,5 @@ app.use("/", indexRoutes);
 app.use("/likes", likesRoutes);
 app.use("/likes/:id/comments", commentsRoutes);
 
-//app.listen(process.env.PORT, process.env.IP);
-app.listen(3000);
+app.listen(process.env.PORT, process.env.IP);
+//app.listen(3000);
