@@ -23,7 +23,7 @@ router.get('/new', middleware.isLoggedIn,(req, res) => {
 router.post('/', middleware.isLoggedIn, (req, res) => {
     // lookup campgrounds using iD
     Likes.findById(req.params.id, (err, like) => {
-        if (err) {
+        if (err || !like) {
             console.log(err);
             res.redirect('/likes');
         } else {

@@ -9,13 +9,13 @@ router.get('/', (req, res) => {
     var noMatch = "we've got nothing by that, yet :(";
     if (req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    
+
         Likes.find({name: regex}, (err, allLikes) => {
             if (err) console.log(err);
             else {
                 if (allLikes.length > 0)
                     res.render("likes/index", {likes: allLikes, noMatch: ""});
-                else 
+                else
                     res.render("likes/index", {likes: allLikes, noMatch: noMatch});
             }
         });
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
             else {
                 res.render("likes/index", {likes: allLikes, noMatch: ""});
             }
-        }); 
+        });
     }
 
 });
@@ -64,9 +64,10 @@ router.get('/:id', (req, res) => {
     //find the campground with provided id
     // render show template with that camp's info
     Likes.findById(req.params.id).populate('comments').exec((err, foundLike) => {
-        if (err)
-            console.log(err);
-        else {
+        if (err || !foundLike) {
+            req.flash("error", "like not found");
+            res.redirect('/likes');
+        } else {
             res.render('likes/show', {data: foundLike});
         }
     });
@@ -92,7 +93,7 @@ router.post("/:id/like", (req, res) => {
 
             if (req.body.turn === '0')
                 foundLike.like = foundLike.like + 1;
-            else 
+            else
                 foundLike.like = foundLike.like - 1;
 
             foundLike.save().then(() => {

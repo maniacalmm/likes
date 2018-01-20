@@ -6,7 +6,7 @@ var middlewareObj = {
     checkLikeOwnership: function(req, res, next) {
             if (req.isAuthenticated()) {
                 Likes.findById(req.params.id, (err, foundLike) => {
-                    if (err) {
+                    if (err || !foundLike) {
                         req.flash("error", "like not found");
                         res.redirect("back");
                     } else {
@@ -17,7 +17,7 @@ var middlewareObj = {
                             res.redirect("back");
                         }
                     }
-                }); 
+                });
             } else {
                 req.flash("error", "You need to be logged in to do that");
                 res.redirect("back"); // cool
@@ -36,7 +36,7 @@ var middlewareObj = {
                             res.redirect("back");
                         }
                     }
-                }); 
+                });
             } else {
                 res.redirect("back"); // cool
             }
