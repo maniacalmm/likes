@@ -1,4 +1,4 @@
-# likes.herokuapp.com
+# stashlike.herokuapp.com
 
 ## it's basically a toy site I built when learning the expressJS, which lets you post things you like that you find on the net.
 
