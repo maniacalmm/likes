@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <div class="thumbnail">
+                <h1> <%= user.username %> </h1>
+                <img src="<%=user.avatar%>" alt="profile pic">
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <h3> Things that <%=user.username%> like: </h3>
+                <ul>
+                <% likes.forEach((like) => { %>
+                    <div class="thumbnail">
+                        <h3><a href="/likes/<%=like._id%>"> <%= like.name %></a></h3>
+                        <img src="<%=like.image%>">
+                        <h4> <%=like.description%> </h4>
+                    </div>
+                <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+<% include ../partials/footer %>

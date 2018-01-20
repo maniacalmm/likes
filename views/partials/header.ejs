@@ -12,6 +12,10 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a href="/likes" class="navbar-brand"><span class="glyphicon glyphicon-heart-empty"> </span> Like</a>
+            <%if (currentUser) {%>
+            <% console.log(currentUser) %>
+            <a class="navbar-brand" href="/users/<%=currentUser._id%>">myLikes</a>
+            <% } %>
         </div>
 
         <div class="collapse navbar-collapse">
@@ -32,13 +36,13 @@
     <div class="container">
         <% console.log(error) %>
         <% if (error && error.length > 0) { %>
-            <div class="alert alert-danger" role="alert"> 
+            <div class="alert alert-danger" role="alert">
                 <h1><%= error %></h1>
             </div>
         <% } %>
 
         <% if (success && success.length > 0) { %>
-        <div class="alert alert-success" role="alert"> 
+        <div class="alert alert-success" role="alert">
             <h1><%= success %></h1>
         </div>
         <% } %>
